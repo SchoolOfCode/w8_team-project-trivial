@@ -7,7 +7,7 @@ the array, displaing 1 at a time
 /*
 PSEUDO-CODE
 
-- SELECT THE QUESTION DIV IN THE DOM 
+- SELECT THE QUESTION H2 IN THE DOM 
 - SET AS TRIVIA_QUESTION 
 - CREATE BUTTON IN HTML
 - SELECT BUTTON IN THE DOM 
@@ -21,3 +21,18 @@ PSEUDO-CODE
 
     
 */
+const questionDisplay = document.querySelector(".question-h2");
+const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
+const generateQuestionButton = document.querySelector(
+  ".generate-question-test"
+);
+let triviaQuestion = "";
+
+// async function fetchQuestion() {
+//   let response = await fetch(
+//     "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+//   );
+//   let data = await response.json();
+//   console.log(data);
+// }
+// fetchQuestion();
