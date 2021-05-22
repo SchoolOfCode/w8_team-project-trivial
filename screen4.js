@@ -41,13 +41,18 @@ async function getQuestionsArray() {
   questionsArray = data.results;  
 };
 
+let count = 0
 function getCurrentQuestion (questionsArray) {
-    for (let i = 0; i < questionsArray.length;i++) {
-    let currentQuestion = questionsArray[i].question;
+    // for (let i = 0; i < questionsArray.length;i++) {
+    // let currentQuestion = questionsArray[i].question;
+    // questionDisplay.textContent = currentQuestion;
+    // console.log(currentQuestion);
+    let currentQuestion = questionsArray[count].question;
+    count++
     questionDisplay.textContent = currentQuestion;
     console.log(currentQuestion);
   } 
-}
 
 generateQuestionButton.addEventListener("click", () => getCurrentQuestion(questionsArray));
+//generateQuestionButton.addEventListener("click", () => getCurrentQuestion(questionsArray));
 // getQuestion();
