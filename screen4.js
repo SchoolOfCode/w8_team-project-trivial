@@ -30,24 +30,24 @@ const generateQuestionButton = document.querySelector(
 );
 let difficultySelection = "easy";
 let categorySelection = "9";
-// let triviaQuestion = "";
+let questionsArray = [];
+
+getQuestionsArray();
 
 async function getQuestionsArray() {
   let response = await fetch(
-    `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
-  );
+    `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`);
   let data = await response.json();
-  let questionsArray = data.results;
-    return questionsArray;  
+  questionsArray = data.results;  
 };
 
-async function getCurrentQuestion () {
-    let currentQuestion = await getQuestionsArray(); 
-//   for (let i = 0; i < questionsArray.length; i++) {
-//     let currentQuestion = questionsArray[i].question;
-//     questionDisplay.textContent = currentQuestion;    
+function getCurrentQuestion (questionsArray) {
+    for (let i = 0; i < questionsArray.length;i++) {
+    let currentQuestion = questionsArray[i].question;
+    questionDisplay.textContent = currentQuestion;
     console.log(currentQuestion);
+  } 
 }
 
-generateQuestionButton.addEventListener("click", getCurrentQuestion);
+generateQuestionButton.addEventListener("click", () => getCurrentQuestion(questionsArray));
 // getQuestion();
