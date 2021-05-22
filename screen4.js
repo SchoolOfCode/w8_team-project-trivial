@@ -15,7 +15,8 @@ PSEUDO-CODE
 - FUNTION GET_QUESTIONS_ARRAY
     - FETCH 10 QUESTIONS FROM API
     - SET ARRAY AS QUESTIONS_ARRAY
-FUNCTION 
+    - RETURN QUESTIONS_ARRAY
+FUNCTION GET_CURRENT_QUESTION
     - LOOP THROUGH QUESTIONS_ARRAY INCRAMENTALLY BY 1
     - SELECT 1 QUESTION FROM THE ARRAY 
     - IF GENERATE_QUESTION_BUTTON IS CLICKED, 
@@ -37,11 +38,16 @@ async function getQuestionsArray() {
   );
   let data = await response.json();
   let questionsArray = data.results;
-  for (let i = 0; i < questionsArray.length; i++) {
-    let currentQuestion = questionsArray[i].question;
-    questionDisplay.textContent = currentQuestion;
-  }
-  console.log(questionsArray);
+    return questionsArray;  
+};
+
+async function getCurrentQuestion () {
+    let currentQuestion = await getQuestionsArray(); 
+//   for (let i = 0; i < questionsArray.length; i++) {
+//     let currentQuestion = questionsArray[i].question;
+//     questionDisplay.textContent = currentQuestion;    
+    console.log(currentQuestion);
 }
-generateQuestionButton.addEventListener("click", getQuestionsArray);
+
+generateQuestionButton.addEventListener("click", getCurrentQuestion);
 // getQuestion();
