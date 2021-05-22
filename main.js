@@ -28,6 +28,10 @@
 //
 
 /*  TRIVIA API */
+//added variables for difficulty and cathegory
+let difficultySelection = "easy";
+let categorySelection = "1";
+
 const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
 async function fetchQuestion() {
   let response = await fetch(
@@ -38,12 +42,14 @@ async function fetchQuestion() {
 }
 fetchQuestion();
 
-let userName = ""
+let userName = "";
 let confirmButton = document.querySelector(".confirm-button");
-confirmButton.addEventListener("click", confirm)
+confirmButton.addEventListener("click", confirm);
 
-function confirm(){
-  let input =document.querySelector("#name-input").value;
-  userName= input.charAt(0).toUpperCase() + input.slice(1);
-  console.log(userName)
+function confirm() {
+  let input = document.querySelector("#name-input").value;
+  userName = input.charAt(0).toUpperCase() + input.slice(1);
+  console.log(userName);
 }
+
+//Writing a Function for Feature 2: Character Selection Icons

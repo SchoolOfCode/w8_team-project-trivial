@@ -5,3 +5,17 @@ Blue: #152F75
 Score Blue: #142AF1
 
 */
+/* image styles */
+
+[type="radio"]:checked + img {
+  outline: 4px solid #ff006c;
+}
+
+/* Hide Radio */
+
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
