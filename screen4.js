@@ -28,11 +28,11 @@ const generateQuestionButton = document.querySelector(
 );
 let triviaQuestion = "";
 
-// async function fetchQuestion() {
-//   let response = await fetch(
-//     "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
-//   );
-//   let data = await response.json();
-//   console.log(data);
-// }
-// fetchQuestion();
+async function getQuestion() {
+  let response = await fetch(
+    "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+  );
+  let data = await response.json();
+  console.log(data);
+}
+getQuestion();
