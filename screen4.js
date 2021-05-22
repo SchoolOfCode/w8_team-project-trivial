@@ -14,7 +14,8 @@ PSEUDO-CODE
 - SET AS GENERATE_QUESTION_BUTTON
 - FUNTION GET_QUESTION
     - FETCH 10 QUESTIONS FROM API
-    - LOOP THROUGH QUESTION ARRAY INCRAMENTALLY BY 1
+    - SET ARRAY AS QUESTIONS_ARRAY
+    - LOOP THROUGH QUESTIONS_ARRAY INCRAMENTALLY BY 1
     - SELECT 1 QUESTION FROM THE ARRAY 
     - IF GENERATE_QUESTION_BUTTON IS CLICKED, 
     - DISPLAY Q1 IN H2  
@@ -35,6 +36,7 @@ async function getQuestion() {
     `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
   );
   let data = await response.json();
-  console.log(data);
+  let questionsArray = data.results;
+  console.log(questionsArray);
 }
 getQuestion();
