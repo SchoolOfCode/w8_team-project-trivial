@@ -26,11 +26,13 @@ const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&di
 const generateQuestionButton = document.querySelector(
   ".generate-question-test"
 );
+let difficultySelection = "easy";
+let categorySelection = "9";
 let triviaQuestion = "";
 
 async function getQuestion() {
   let response = await fetch(
-    "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+    `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
   );
   let data = await response.json();
   console.log(data);
