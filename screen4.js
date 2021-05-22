@@ -37,6 +37,10 @@ async function getQuestion() {
   );
   let data = await response.json();
   let questionsArray = data.results;
+  for (let i = 0; i < questionsArray.length; i++) {
+    console.log(questionsArray[i].question);
+  }
   console.log(questionsArray);
 }
-getQuestion();
+generateQuestionButton.addEventListener("click", getQuestion);
+// getQuestion();
