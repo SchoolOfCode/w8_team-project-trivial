@@ -38,4 +38,12 @@ async function fetchQuestion() {
 }
 fetchQuestion();
 
-let userName = "Enter";
+let userName = ""
+let confirmButton = document.querySelector(".confirm-button");
+confirmButton.addEventListener("click", confirm)
+
+function confirm(){
+  let input =document.querySelector("#name-input").value;
+  userName= input.charAt(0).toUpperCase() + input.slice(1);
+  console.log(userName)
+}
