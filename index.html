@@ -12,11 +12,20 @@
       <section id="screen1">
         <button class="start-button" src="#screen2">START</button>
       </section>
+
+      <!-- Screen 2 -->
       <section id="screen2">
-        <div class="input">
-          <h2>What's your name?</h2>
-          <input type="text" name="" id="" />
-        </div>
+        <h2>What's your name?</h2>
+        <form class="input">
+          <input
+            type="text"
+            pattern="[A-Za-z]{1,10}"
+            id="name-input"
+            title="Username must not be than 10 letters."
+          />
+          <button type="button" class="confirm-button">CONFIRM</button>
+        </form>
+
         <div class="character-selection">
           <h2>Select character</h2>
           <button></button>
@@ -27,8 +36,10 @@
           <button></button>
         </div>
         <br />
-        <button class="confirm-button" src="#screen3">CONFIRM</button>
+        <!-- <button class="confirm-button" src="#screen3">CONFIRM</button> -->
       </section>
+
+      <!---->
       <section class="screen3">
         <div class="category-selection">
           <h2>Select a category</h2>
