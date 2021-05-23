@@ -71,24 +71,25 @@ function getCurrentQuestion(questionsArray) {
   let correctAnswer = questionsArray[count].correct_answer;
   displayCorrectAnswer.innerHTML = correctAnswer;
   let incorrectAnswersArray = questionsArray[count].incorrect_answers;
+  // let incorrectAnswer = questionsArray[count].incorrect_answers;
   for (let i = 0; i < incorrectAnswersArray.length; i++) {
     displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
   }
   count++;
-  function shuffle() {
-    let parent = document.getElementById("answers");
-    let button = document.createDocumentFragment();
-    while (parent.children.length) {
-      button.appendChild(
-        parent.children[Math.floor(Math.random() * parent.children.length)]
-      );
-    }
-    parent.appendChild(button);
-  }
+
   shuffle();
   console.log(questionsArray);
 }
-
+function shuffle() {
+  let parent = document.getElementById("answers");
+  let button = document.createDocumentFragment();
+  while (parent.children.length) {
+    button.appendChild(
+      parent.children[Math.floor(Math.random() * parent.children.length)]
+    );
+  }
+  parent.appendChild(button);
+}
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
