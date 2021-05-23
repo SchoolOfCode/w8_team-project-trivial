@@ -42,10 +42,12 @@ const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&di
 const generateQuestionButton = document.querySelector(
   ".generate-question-test"
 );
+const displayCorrectAnswer = document.querySelector("#correct-answer");
+
 let difficultySelection = "easy";
 let categorySelection = "9";
-let startAgain = document.querySelector(".start-again");
 let count = 0;
+let startAgain = document.querySelector(".start-again");
 
 function startGame(questionsArray) {
   questionsArray = [];
@@ -64,11 +66,18 @@ function getCurrentQuestion(questionsArray) {
   currentQuestion = questionsArray[count].question;
   count++;
   questionDisplay.textContent = currentQuestion;
-  console.log(currentQuestion);
-  console.log(questionsArray);
-  console.log(count);
 }
-
+async function getCorrectAnswer() {
+  // let correctAnswer = questionsArray.correct_answer;
+  // console.log(questionsArray);
+  // currentQuestion = questionsArray[count].question;
+  // count++;
+  // questionDisplay.textContent = currentQuestion;
+  // console.log(currentQuestion);
+  // console.log(questionsArray);
+  // console.log(count);
+}
+getCorrectAnswer();
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
