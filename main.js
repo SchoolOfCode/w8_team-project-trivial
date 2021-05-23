@@ -1,55 +1,63 @@
-//Pseudo code
-//
-//# SCREEN 2
+// # Screen 5
 
-// - select input form the dom
-//
-// Feature 1: Name input
-// - select input from the dom
-// - set as user input
-// - if userInput is = to numbers 'please only use characters' (display error message)
-// - valdation- character = CAPS first letter
-// - if user has selected character and filled input value allow them to move to the next screen onclick
-// -
-// - if userInput is = to numbers  (display error message)'please only use characters'
-// - capitalise first letter of input (validation)
-// - use .focus method to automatically place cursor input field
+// Feature 1: Score Display
+// - Calls the stored variable and displays it in the middle upper screen
 
-// Feature 2: Character Selection Icons
-// - Add 6 buttons
-// - limit the button selection to 1: if another button is selected, the first automatically unselected
+// Feature 2: Name and Character
+// - Calls the stored chracter and Name variables and displays it next to score displau
+// - resent function when the user plays a new game
 
-// Feature 3: Confirmation Button
-// - if both user input and 1 category button is selected, allow user to continue user journey
-// - if user input is missing, display an error message
-// - if user has selected two buttons, display error message "choose 1 charcter"*
-// - once user input is correct, store character selection and name in 2 seperate variables
-// - attach href link to the confirm button, send user to screen 4
-//
+// Feature 3: GIF Display
+// - if the user score is above 8-10, cue excited mood variable, if between 5-8 cue good job variable, if 3-5 lame job variable, 3-0 RUBBISH variable,
+// - fetch and disaply GIF according to variable
 
-/*  TRIVIA API */
-//added variables for difficulty and cathegory
-let difficultySelection = "easy";
-let categorySelection = "1";
+// Feature 4: Play Again
+// - create button that links to screen 3
+// - reset all selections
 
-const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
-async function fetchQuestion() {
+// Feature 5: Shareable Buttons * fancy future feature
+
+let score = 4;
+const API_KEY = "4Y7M7LY0VDS6";
+let playAgainButton = document.querySelector(".play-again");
+let searchTerm = "trivia";
+
+//A simple function that translates score into a search term for API to use
+function readScore(score) {
+  if (score == 0) {
+    searchTerm = "bad";
+  } else if (score > 0 && score <= 3) {
+    searchTerm = "try_again";
+  } else if (score > 3 && score <= 6) {
+    searchTerm = "not_bad";
+  } else if (score > 6 && score <= 9) {
+    searchTerm = "excited";
+  } else if (score == 10) {
+    searchTerm = "unstopable";
+  }
+}
+readScore(score);
+
+const requestUrlGifApi = `https://g.tenor.com/v1/search?q=${searchTerm}&key=${API_KEY}&limit=1`;
+
+async function fetchGif() {
   let response = await fetch(
-    "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+    `https://g.tenor.com/v1/search?q=${searchTerm}&key=${API_KEY}&limit=1`
   );
   let data = await response.json();
-  console.log(data);
+  let gifUrl = data.results[0].media[0].mediumgif.url;
+  let img = document.createElement("img");
+  img.setAttribute("src", gifUrl);
+  let gifdiv = document.createElement("div");
+  gifdiv.appendChild(img);
+  playAgainButton.parentNode.insertBefore(gifdiv, playAgainButton);
+
+  console.log(data.results[0].media[0].mediumgif.url);
 }
-fetchQuestion();
-
-let userName = "";
-let confirmButton = document.querySelector(".confirm-button");
-confirmButton.addEventListener("click", confirm);
-
-function confirm() {
-  let input = document.querySelector("#name-input").value;
-  userName = input.charAt(0).toUpperCase() + input.slice(1);
-  console.log(userName);
-}
-
-//Writing a Function for Feature 2: Character Selection Icons
+fetchGif();
+//notes about gif API:
+//-sometimes returns different gifs, but still related to search term.
+//-gifs can have different sizes
+//
+//should we have a styled div for the gif already in html?
+//sould we set its height or width?
