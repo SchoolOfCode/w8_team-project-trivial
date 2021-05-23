@@ -30,29 +30,33 @@ const generateQuestionButton = document.querySelector(
 );
 let difficultySelection = "easy";
 let categorySelection = "9";
-let questionsArray = [];
+let startAgain = document.querySelector(".start-again");
+let count = 0;
 
-getQuestionsArray();
-
+function startGame(questionsArray) {
+  questionsArray = [];
+  getQuestionsArray();
+  count = 0;
+}
 async function getQuestionsArray() {
   let response = await fetch(
-    `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`);
+    `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
+  );
   let data = await response.json();
-  questionsArray = data.results;  
-};
+  questionsArray = data.results;
+}
 
-let count = 0
-function getCurrentQuestion (questionsArray) {
-    // for (let i = 0; i < questionsArray.length;i++) {
-    // let currentQuestion = questionsArray[i].question;
-    // questionDisplay.textContent = currentQuestion;
-    // console.log(currentQuestion);
-    let currentQuestion = questionsArray[count].question;
-    count++
-    questionDisplay.textContent = currentQuestion;
-    console.log(currentQuestion);
-  } 
+function getCurrentQuestion(questionsArray) {
+  currentQuestion = questionsArray[count].question;
+  count++;
+  questionDisplay.textContent = currentQuestion;
+  console.log(currentQuestion);
+  console.log(questionsArray);
+  console.log(count);
+}
 
-generateQuestionButton.addEventListener("click", () => getCurrentQuestion(questionsArray));
-//generateQuestionButton.addEventListener("click", () => getCurrentQuestion(questionsArray));
-// getQuestion();
+generateQuestionButton.addEventListener("click", () =>
+  getCurrentQuestion(questionsArray)
+);
+
+startAgain.addEventListener("click", startGame);
