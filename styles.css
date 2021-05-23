@@ -19,3 +19,32 @@ Score Blue: #142AF1
   width: 0;
   height: 0;
 }
+
+[type="radio"] + img {
+  cursor: pointer;
+}
+[type="radio"] + p {
+  cursor: pointer;
+  display: inline-block;
+  padding: 3px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  width: 10em;
+  text-align: center;
+}
+[type="radio"]:checked + p {
+  outline: 2px solid rgb(95, 72, 72);
+  background-color: #a0a0a0a0;
+}
+
+.character-container {
+  display: flex;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+.category-container div {
+  background-color: blueviolet;
+  padding: 30px;
+  width: 30%;
+}
