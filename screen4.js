@@ -71,14 +71,12 @@ function getCurrentQuestion(questionsArray) {
   let correctAnswer = questionsArray[count].correct_answer;
   displayCorrectAnswer.innerHTML = correctAnswer;
   let incorrectAnswersArray = questionsArray[count].incorrect_answers;
-  // let incorrectAnswer = questionsArray[count].incorrect_answers;
   for (let i = 0; i < incorrectAnswersArray.length; i++) {
     displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
   }
   count++;
 
   shuffle();
-  console.log(questionsArray);
 }
 function shuffle() {
   let parent = document.getElementById("answers");
@@ -90,6 +88,32 @@ function shuffle() {
   }
   parent.appendChild(button);
 }
+//handle answer response
+/* Loop though answers node list
+when clicked, alert("ciao")
+
+ADD ANSWER CLASS TO ALL ANSWERS
+SELECT ANSWERS
+LOOP THOUGH NODELIST
+ADD CLICK LISTENER TO ALL
+*/
+function increaseScoreOnClick() {
+  let score = 0;
+  let allAnswers = document.querySelectorAll(".answer");
+  for (let i = 0; i < allAnswers.length; i++) {
+    allAnswers[i].onclick = () => {
+      getCurrentQuestion(questionsArray);
+      if (allAnswers[i].id === "correct-answer") {
+        console.log("correct");
+        score++;
+        console.log(`score ` + score);
+        return score;
+      }
+    };
+  }
+}
+increaseScoreOnClick();
+
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
