@@ -33,10 +33,10 @@
 let userName = "";
 let categorySelection = "";
 let difficutlySelection = "";
-// let data = {
-//   categoryStorage:"",
-//   difficultyStorage:"",
-// }
+let data = {
+  categoryStorage:"",
+  difficultyStorage:"",
+}
 let selection = ""
 let difficulty = ""
 
