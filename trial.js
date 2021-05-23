@@ -6,7 +6,6 @@ the array, displaing 1 at a time
 
 /*
 PSEUDO-CODE
-
 - SELECT THE QUESTION H2 IN THE DOM 
 - SET AS TRIVIA_QUESTION 
 - CREATE BUTTON IN HTML
@@ -21,7 +20,6 @@ FUNCTION GET_CURRENT_QUESTION
     - SELECT 1 QUESTION FROM THE ARRAY 
     - IF GENERATE_QUESTION_BUTTON IS CLICKED, 
     - DISPLAY Q1 IN H2  
-
 */
 /*
 - SELECT CORRECT ANSWER IN THE DOM
@@ -43,20 +41,20 @@ const generateQuestionButton = document.querySelector(
   ".generate-question-test"
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
-const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
-
+let displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
+let answersNodeList = document.querySelectorAll(".answers");
 let difficultySelection = "easy";
 let categorySelection = "9";
 let count = 0;
 let questionsArray = [];
-let startAgain = document.querySelector(".start-again");
+// let startAgain = document.querySelector(".start-again");
 getQuestionsArray();
 // getCorrectAnswer();
-function startGame(questionsArray) {
-  questionsArray = [];
-  getQuestionsArray();
-  count = 0;
-}
+// function startGame(questionsArray) {
+// questionsArray = [];
+//   getQuestionsArray();
+//   count = 0;
+// }
 async function getQuestionsArray() {
   let response = await fetch(
     `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
@@ -71,26 +69,30 @@ function getCurrentQuestion(questionsArray) {
   let correctAnswer = questionsArray[count].correct_answer;
   displayCorrectAnswer.innerHTML = correctAnswer;
   let incorrectAnswersArray = questionsArray[count].incorrect_answers;
+  let incorrectAnswer = questionsArray[count].incorrect_answers;
   for (let i = 0; i < incorrectAnswersArray.length; i++) {
     displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
   }
-  count++;
-  function shuffle() {
-    let parent = document.getElementById("answers");
-    let button = document.createDocumentFragment();
-    while (parent.children.length) {
-      button.appendChild(
-        parent.children[Math.floor(Math.random() * parent.children.length)]
-      );
+  const shuffleArray = (answersNodeList) => {
+    for (let i = answersNodeList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = answersNodeList[i];
+      answersNodeList[i] = answersNodeList[j];
+      answersNodeList[j] = temp;
     }
-    parent.appendChild(button);
-  }
-  shuffle();
+    console.log(answersNodeList);
+  };
+
+  // console.log(displayIncorrectAnswers);
+  console.log(incorrectAnswersArray);
   console.log(questionsArray);
+  console.log(shuffleArray());
+
+  count++;
 }
 
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
 
-startAgain.addEventListener("click", startGame);
+// startAgain.addEventListener("click", startGame);

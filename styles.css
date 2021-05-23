@@ -6,3 +6,15 @@ Score Blue: #142AF1
 
 
 */
+#correct-answer {
+  background: #ff006c;
+}
+.incorrect-1 {
+  background: #ffc128;
+}
+.incorrect-2 {
+  background: green;
+}
+.incorrect-3 {
+  background: purple;
+}
