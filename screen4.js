@@ -43,17 +43,20 @@ const generateQuestionButton = document.querySelector(
   ".generate-question-test"
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
+const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
 
 let difficultySelection = "easy";
 let categorySelection = "9";
 let count = 0;
-let startAgain = document.querySelector(".start-again");
-
-function startGame(questionsArray) {
-  questionsArray = [];
-  getQuestionsArray();
-  count = 0;
-}
+let questionsArray = [];
+// let startAgain = document.querySelector(".start-again");
+getQuestionsArray();
+// getCorrectAnswer();
+// function startGame(questionsArray) {
+  // questionsArray = [];
+//   getQuestionsArray();
+//   count = 0;
+// }
 async function getQuestionsArray() {
   let response = await fetch(
     `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
@@ -61,25 +64,24 @@ async function getQuestionsArray() {
   let data = await response.json();
   questionsArray = data.results;
 }
-
+ 
 function getCurrentQuestion(questionsArray) {
   currentQuestion = questionsArray[count].question;
-  count++;
   questionDisplay.textContent = currentQuestion;
+  let correctAnswer = questionsArray[count].correct_answer;
+  displayCorrectAnswer.innerHTML = correctAnswer;
+  let incorrectAnswersArray = questionsArray[count].incorrect_answers;
+  // let incorrectAnswer = questionsArray[count].incorrect_answers;
+  for (let i =0; i <incorrectAnswersArray.length; i++) {
+    displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
+  }
+  count++
+  
+  console.log(questionsArray);
 }
-async function getCorrectAnswer() {
-  // let correctAnswer = questionsArray.correct_answer;
-  // console.log(questionsArray);
-  // currentQuestion = questionsArray[count].question;
-  // count++;
-  // questionDisplay.textContent = currentQuestion;
-  // console.log(currentQuestion);
-  // console.log(questionsArray);
-  // console.log(count);
-}
-getCorrectAnswer();
+
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
 
-startAgain.addEventListener("click", startGame);
+// startAgain.addEventListener("click", startGame);
