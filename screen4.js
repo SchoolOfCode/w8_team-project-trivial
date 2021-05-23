@@ -44,6 +44,9 @@ const generateQuestionButton = document.querySelector(
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
+// const progressBar = document.querySelector(".progress-bar")
+const gameInProgress = document.querySelector("#game-in-progress");
+
 
 let difficultySelection = "easy";
 let categorySelection = "9";
@@ -52,6 +55,14 @@ let questionsArray = [];
 let startAgain = document.querySelector(".start-again");
 getQuestionsArray();
 // getCorrectAnswer();
+
+gameInProgress.style.width = gameInProgress.getAttribute("progress-done") + "%";
+
+
+
+
+
+
 function startGame(questionsArray) {
   questionsArray = [];
   getQuestionsArray();
