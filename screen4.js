@@ -23,6 +23,16 @@ FUNCTION GET_CURRENT_QUESTION
     - DISPLAY Q1 IN H2  
 
 */
+/*
+- SELECT CORRECT ANSWER IN THE DOM
+- SELECT INCORRECT ANSWERS IN THE DOM
+- FUNCTION DISPLAY_CORRECT_ANSWER
+  - PASS IN CURREN
+
+
+
+
+*/
 const questionDisplay = document.querySelector(".question-h2");
 const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
 const generateQuestionButton = document.querySelector(
