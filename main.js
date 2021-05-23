@@ -46,10 +46,24 @@ let userName = "";
 let confirmButton = document.querySelector(".confirm-button");
 confirmButton.addEventListener("click", confirm);
 
+let avatars = document.querySelector(".character-selection");
+let avatarImage = "";
+
+function getAvatar() {
+  let av = document.getElementsByName("avatar");
+  for (i = 0; i < av.length; i++) {
+    if (av[i].checked) {
+      avatarImage = av[i].value;
+      console.log(avatarImage);
+    }
+  }
+}
+
 function confirm() {
   let input = document.querySelector("#name-input").value;
   userName = input.charAt(0).toUpperCase() + input.slice(1);
   console.log(userName);
+  getAvatar();
 }
 
 //Writing a Function for Feature 2: Character Selection Icons
