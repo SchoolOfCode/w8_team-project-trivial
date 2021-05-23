@@ -18,3 +18,37 @@ Score Blue: #142AF1
 .incorrect-3 {
   background: purple;
 }
+
+ /* Screen 4  */
+
+ /* Progress Bar */
+
+ body {
+  display: flex;
+  font-family: 'Courier New', Courier, monospace;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.progress-bar {
+  background-color: #d8d8d8;
+  border-radius: 20px;
+  height: 30px;
+  width: 300px;
+}
+
+.game-in-progress {
+  background: linear-gradient(to left, #F2709C, #FF9472 );
+  box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #FF9472;
+  border-radius: 20px;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  height: 100%;
+  width: 0; 
+  transition: 1s ease; 
+}
