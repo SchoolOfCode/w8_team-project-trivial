@@ -44,8 +44,8 @@ const generateQuestionButton = document.querySelector(
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
-// const progressBar = document.querySelector(".progress-bar")
-const gameInProgress = document.querySelector("#game-in-progress");
+const progressBar = document.querySelector(".progress-bar")
+const gameInProgress = document.querySelector(".game-in-progress");
 
 
 let difficultySelection = "easy";
@@ -56,8 +56,21 @@ let startAgain = document.querySelector(".start-again");
 getQuestionsArray();
 // getCorrectAnswer();
 
-gameInProgress.style.width = gameInProgress.getAttribute("progress-done") + "%";
+// let currentProgress = 0;
+// const completeProgress = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]; 
 
+function showGameProgress() {
+  let i = 0;
+  let gameProgress = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]; 
+
+  progressBar.style.width = `${gameProgress[i]} %`;
+  gameInProgress.innerHTML = gameProgress[i] + "%";
+  i++;
+  console.log(i);
+  // if (i == completeProgress.length) {
+  //     gameInProgress.innerHTML = "Completed"
+  // }  
+}
 
 
 
@@ -128,5 +141,6 @@ increaseScoreOnClick();
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
+generateQuestionButton.addEventListener("click", showGameProgress); 
 
 startAgain.addEventListener("click", startGame);
