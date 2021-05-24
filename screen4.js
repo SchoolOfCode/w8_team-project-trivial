@@ -87,7 +87,7 @@ function getCurrentQuestion(questionsArray) {
   if (count >= 10) {
     alert("Count ten reached");
   }
-  return count;
+
 
   questionCounter++;
   progressBarText.innerText = `Question ${questionCounter} of ${maximumQuestions}`;
@@ -95,7 +95,9 @@ function getCurrentQuestion(questionsArray) {
     (questionCounter / maximumQuestions) * 100
   }%`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
+  
   shuffle();
+  return count;
 }
 
 function shuffle() {
@@ -119,7 +121,6 @@ ADD CLICK LISTENER TO ALL
 */
 function increaseScoreOnClick() {
   let score = 0;
-  let scoreDisplay = document.querySelector(".score");
   let allAnswers = document.querySelectorAll(".answer");
   for (let i = 0; i < allAnswers.length; i++) {
     allAnswers[i].onclick = () => {
