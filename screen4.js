@@ -57,6 +57,11 @@ getQuestionsArray();
 let questionCounter = 0;
 const maximumQuestions = 10;
 
+// if (questionCounter = maximumQuestions) {
+//   let finishedGame = document.getElementById("myAnchor").href;
+//   console.log(finishedGame)
+
+
 
 function startGame(questionsArray) {
   questionsArray = [];
@@ -84,7 +89,7 @@ function getCurrentQuestion(questionsArray) {
 
   questionCounter++
   progressBarText.innerText = `Question ${questionCounter} of ${maximumQuestions}`;
-  showGameProgress.style.width = `${(questionCounter/maximumQuestions)*100}%`
+  showGameProgress.style.width = `${(questionCounter/maximumQuestions)*100}%`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
   shuffle();
 }
