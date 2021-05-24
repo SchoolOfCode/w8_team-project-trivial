@@ -44,6 +44,9 @@ const generateQuestionButton = document.querySelector(
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
+const progressBarText = document.querySelector(".progress-bar")
+const showGameProgress = document.querySelector(".show-game-progress");
+
 
 let difficultySelection = "easy";
 let categorySelection = "9";
@@ -51,7 +54,10 @@ let count = 0;
 let questionsArray = [];
 let startAgain = document.querySelector(".start-again");
 getQuestionsArray();
-// getCorrectAnswer();
+let questionCounter = 0;
+const maximumQuestions = 10;
+
+
 function startGame(questionsArray) {
   questionsArray = [];
   getQuestionsArray();
@@ -81,8 +87,14 @@ function getCurrentQuestion(questionsArray) {
   }
   return count;
 
+  questionCounter++
+  progressBarText.innerText = `Question ${questionCounter} of ${maximumQuestions}`;
+  showGameProgress.style.width = `${(questionCounter/maximumQuestions)*100}%`
+  // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
   shuffle();
 }
+
+
 function shuffle() {
   let parent = document.getElementById("answers");
   let button = document.createDocumentFragment();
