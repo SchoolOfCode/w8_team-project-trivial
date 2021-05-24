@@ -40,7 +40,7 @@ Score Blue: #142AF1
   
 }
 
-.game-in-progress {
+.show-game-progress {
   background: linear-gradient(to left, #F2709C, #FF9472 );
   box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #FF9472;
   border-radius: 20px;
