@@ -75,6 +75,11 @@ function getCurrentQuestion(questionsArray) {
     displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
   }
   count++;
+  console.log(count);
+  if (count >= 10) {
+    alert("miao");
+  }
+  return count;
 
   shuffle();
 }
@@ -99,6 +104,7 @@ ADD CLICK LISTENER TO ALL
 */
 function increaseScoreOnClick() {
   let score = 0;
+  let scoreDisplay = document.querySelector(".score");
   let allAnswers = document.querySelectorAll(".answer");
   for (let i = 0; i < allAnswers.length; i++) {
     allAnswers[i].onclick = () => {
@@ -106,14 +112,14 @@ function increaseScoreOnClick() {
       if (allAnswers[i].id === "correct-answer") {
         console.log("correct");
         score++;
-        console.log(`score ` + score);
-        return score;
+        // console.log(`score ` + score);
       }
     };
   }
 }
 increaseScoreOnClick();
-
+// let totalScore = increaseScoreOnClick();
+// console.log();
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
