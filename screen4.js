@@ -44,9 +44,8 @@ const generateQuestionButton = document.querySelector(
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
-const progressBarText = document.querySelector(".progress-bar")
+const progressBarText = document.querySelector(".progress-bar");
 const showGameProgress = document.querySelector(".show-game-progress");
-
 
 let difficultySelection = "easy";
 let categorySelection = "9";
@@ -60,8 +59,6 @@ const maximumQuestions = 10;
 // if (questionCounter = maximumQuestions) {
 //   let finishedGame = document.getElementById("myAnchor").href;
 //   console.log(finishedGame)
-
-
 
 function startGame(questionsArray) {
   questionsArray = [];
@@ -88,17 +85,18 @@ function getCurrentQuestion(questionsArray) {
   count++;
   console.log(count);
   if (count >= 10) {
-    alert("miao");
+    alert("Count ten reached");
   }
   return count;
 
-  questionCounter++
+  questionCounter++;
   progressBarText.innerText = `Question ${questionCounter} of ${maximumQuestions}`;
-  showGameProgress.style.width = `${(questionCounter/maximumQuestions)*100}%`;
+  showGameProgress.style.width = `${
+    (questionCounter / maximumQuestions) * 100
+  }%`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
   shuffle();
 }
-
 
 function shuffle() {
   let parent = document.getElementById("answers");
