@@ -129,6 +129,5 @@ increaseScoreOnClick();
 generateQuestionButton.addEventListener("click", () =>
   getCurrentQuestion(questionsArray)
 );
-generateQuestionButton.addEventListener("click", showGameProgress); 
 
 startAgain.addEventListener("click", startGame);
