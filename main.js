@@ -1,22 +1,5 @@
 // # Screen 5
 
-// Feature 1: Score Display
-// - Calls the stored variable and displays it in the middle upper screen
-
-// Feature 2: Name and Character
-// - Calls the stored chracter and Name variables and displays it next to score displau
-// - resent function when the user plays a new game
-
-// Feature 3: GIF Display
-// - if the user score is above 8-10, cue excited mood variable, if between 5-8 cue good job variable, if 3-5 lame job variable, 3-0 RUBBISH variable,
-// - fetch and disaply GIF according to variable
-
-// Feature 4: Play Again
-// - create button that links to screen 3
-// - reset all selections
-
-// Feature 5: Shareable Buttons * fancy future feature
-
 let score = 4;
 const API_KEY = "4Y7M7LY0VDS6";
 let playAgainButton = document.querySelector(".play-again");
@@ -55,9 +38,4 @@ async function fetchGif() {
   console.log(data.results[0].media[0].mediumgif.url);
 }
 fetchGif();
-//notes about gif API:
-//-sometimes returns different gifs, but still related to search term.
-//-gifs can have different sizes
-//
-//should we have a styled div for the gif already in html?
-//sould we set its height or width?
+// add above
