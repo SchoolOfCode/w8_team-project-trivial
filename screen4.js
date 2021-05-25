@@ -84,14 +84,14 @@ function getCurrentQuestion(questionsArray) {
   }
   count++;
   console.log(count);
-  if (count >= 10) {
+  if (count >= 11) {
     alert("Count ten reached");
   }
 
 
   questionCounter++;
   showGameProgress.style.width = `${(questionCounter / maximumQuestions) * 100}%`;
-  showGameProgress.innerText = `${questionCounter} of ${maximumQuestions}`;
+  showGameProgress.innerText = `${questionCounter}/${maximumQuestions}`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
   
   shuffle();
