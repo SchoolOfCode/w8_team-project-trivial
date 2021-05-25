@@ -46,7 +46,6 @@ const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
 const progressBarText = document.querySelector(".progress-bar");
 const showGameProgress = document.querySelector(".show-game-progress");
-let scoreAmount = document.querySelector("#score-amount");
 let difficultySelection = "easy";
 let categorySelection = "9";
 let count = 0;
@@ -64,6 +63,7 @@ function startGame(questionsArray) {
   questionsArray = [];
   getQuestionsArray();
   count = 0;
+  score = 0;
 }
 let score = 0;
 let allAnswers = document.querySelectorAll(".answer");
@@ -130,7 +130,6 @@ function increaseScoreOnClick() {
       if (allAnswers[i].id === "correct-answer") {
         console.log("correct");
         score++;
-        scoreAmount.innerText = score;
         console.log(`score ` + score);
       }
     };
