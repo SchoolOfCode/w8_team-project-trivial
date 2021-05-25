@@ -46,7 +46,7 @@ const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
 const progressBarText = document.querySelector(".progress-bar");
 const showGameProgress = document.querySelector(".show-game-progress");
-
+let scoreAmount = document.querySelector("#score-amount");
 let difficultySelection = "easy";
 let categorySelection = "9";
 let count = 0;
@@ -65,6 +65,8 @@ function startGame(questionsArray) {
   getQuestionsArray();
   count = 0;
 }
+let score = 0;
+let allAnswers = document.querySelectorAll(".answer");
 async function getQuestionsArray() {
   let response = await fetch(
     `https://opentdb.com/api.php?amount=10&category=${categorySelection}&difficulty=${difficultySelection}&type=multiple`
@@ -74,6 +76,9 @@ async function getQuestionsArray() {
 }
 
 function getCurrentQuestion(questionsArray) {
+  if (count >= 10) {
+    alert("Count ten reached");
+  }
   currentQuestion = questionsArray[count].question;
   questionDisplay.textContent = currentQuestion;
   let correctAnswer = questionsArray[count].correct_answer;
@@ -83,11 +88,6 @@ function getCurrentQuestion(questionsArray) {
     displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
   }
   count++;
-  console.log(count);
-  if (count >= 10) {
-    alert("Count ten reached");
-  }
-
 
   questionCounter++;
   progressBarText.innerText = `Question ${questionCounter} of ${maximumQuestions}`;
@@ -95,8 +95,9 @@ function getCurrentQuestion(questionsArray) {
     (questionCounter / maximumQuestions) * 100
   }%`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
-  
+
   shuffle();
+
   return count;
 }
 
@@ -111,29 +112,32 @@ function shuffle() {
   parent.appendChild(button);
 }
 //handle answer response
-/* Loop though answers node list
-when clicked, alert("ciao")
+/* 
 
 ADD ANSWER CLASS TO ALL ANSWERS
 SELECT ANSWERS
 LOOP THOUGH NODELIST
 ADD CLICK LISTENER TO ALL
+IF CLICKED ANSWER HAS ID OF "CORRECT-ANSWER"
+ - INCREASE SCORE
+RETURN SCORE
 */
+
 function increaseScoreOnClick() {
-  let score = 0;
-  let allAnswers = document.querySelectorAll(".answer");
   for (let i = 0; i < allAnswers.length; i++) {
     allAnswers[i].onclick = () => {
       getCurrentQuestion(questionsArray);
       if (allAnswers[i].id === "correct-answer") {
         console.log("correct");
         score++;
-        // console.log(`score ` + score);
+        scoreAmount.innerText = score;
+        console.log(`score ` + score);
       }
     };
   }
 }
 increaseScoreOnClick();
+
 // let totalScore = increaseScoreOnClick();
 // console.log();
 generateQuestionButton.addEventListener("click", () =>
