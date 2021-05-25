@@ -44,7 +44,7 @@ const generateQuestionButton = document.querySelector(
 );
 const displayCorrectAnswer = document.querySelector("#correct-answer");
 const displayIncorrectAnswers = document.querySelectorAll(".incorrect-answer");
-const progressBarText = document.querySelector(".progress-bar");
+const progressBar = document.querySelector(".progress-bar");
 const showGameProgress = document.querySelector(".show-game-progress");
 let difficultySelection = "easy";
 let categorySelection = "9";
@@ -88,12 +88,16 @@ function getCurrentQuestion(questionsArray) {
     displayIncorrectAnswers[i].innerHTML = incorrectAnswersArray[i];
   }
   count++;
+  console.log(count);
+  if (count >= 11) {
+    alert("Count ten reached");
+  }
 
   questionCounter++;
-  progressBarText.innerText = `Question ${questionCounter} of ${maximumQuestions}`;
   showGameProgress.style.width = `${
     (questionCounter / maximumQuestions) * 100
   }%`;
+  showGameProgress.innerText = `${questionCounter}/${maximumQuestions}`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
 
   shuffle();
