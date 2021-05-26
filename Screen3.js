@@ -74,20 +74,20 @@ function storeDifficulty(event) {
   difficulty = event.target.dataset.category;
 }
 
-// let letsGo = document.querySelector(".letsgo-button");
-// letsGo.addEventListener("click", goToScreen4);
-// function goToScreen4() {
-//   screen3.classList.add("hide");
-//   screen4.classList.remove("hide");
-// }
-// let confirmButton = document.querySelector(".confirm-button");
-// confirmButton.addEventListener("click", confirm);
+let letsGo = document.querySelector(".letsgo-button");
+letsGo.addEventListener("click", goToScreen4);
+function goToScreen4() {
+  screen3.classList.add("hide");
+  screen4.classList.remove("hide");
+}
+let confirmButton = document.querySelector(".confirm-button");
+confirmButton.addEventListener("click", confirm);
 
-// function confirm() {
-//   let input = document.querySelector("#name-input").value;
-//   userName = input.charAt(0).toUpperCase() + input.slice(1);
-//   console.log(userName);
-//  }
+function confirm() {
+  let input = document.querySelector("#name-input").value;
+  userName = input.charAt(0).toUpperCase() + input.slice(1);
+  console.log(userName); 
+ }
 
 // Writing a Function for Feature 2: Character Selection Icon
 // each category
