@@ -32,6 +32,7 @@
 
 // let userName = "";
 // let categorySelection = "";
+let screen4 = document.querySelector("#screen4");
 let difficutlySelection = "";
 let data = {
   categoryStorage: "",
@@ -39,7 +40,7 @@ let data = {
 };
 let selection = "";
 let difficulty = "";
-
+// let questionsArray = [];
 // const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
 async function fetchQuestion() {
   console.log(selection);
@@ -50,10 +51,11 @@ async function fetchQuestion() {
 
   let data = await response.json();
   console.log(data);
+  questionsArray = data.results;
 }
 
-let getCat = document.querySelectorAll(".category-button");
-getCat.forEach((item) => {
+let getCategory = document.querySelectorAll(".category-button");
+getCategory.forEach((item) => {
   item.addEventListener("click", storeCategory);
 });
 
@@ -72,9 +74,12 @@ function storeDifficulty(event) {
   difficulty = event.target.dataset.category;
 }
 
-let letsGo = document.querySelector(".letsgo-button");
-letsGo.addEventListener("click", fetchQuestion);
-
+// let letsGo = document.querySelector(".letsgo-button");
+// letsGo.addEventListener("click", goToScreen4);
+// function goToScreen4() {
+//   screen3.classList.add("hide");
+//   screen4.classList.remove("hide");
+// }
 // let confirmButton = document.querySelector(".confirm-button");
 // confirmButton.addEventListener("click", confirm);
 

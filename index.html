@@ -9,9 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Screen 1 -->
-    <main>
-      <section id="screen1" class="screen flex">
+   
+    <main> 
+      <!-- Screen 1 -->
+      <section id="screen1" class="screen flex" >
         <div id="home-logo">
           <img src="/Tivial-Assets/Logo-Trivial/00LogoMerged.svg" alt="Logo" />
         </div>
@@ -19,7 +20,7 @@
       </section>
 
       <!-- Screen 2-->
-        <section id="screen2" class="screen flex">
+        <section id="screen2" class="screen flex hide">
           <div class="screen-logo">
             <img src="/Tivial-Assets/Logo-Trivial/01LogoBase.svg" alt="">
           </div>
@@ -30,7 +31,7 @@
                 type="text"
                 pattern="[A-Za-z]{1,10}"
                 id="name-input"
-                title="Username must not be than 10 letters." />
+                title="Username must not be than 10 letters." required />
           </div>
           
         <div class="character-selection">
@@ -43,6 +44,7 @@
                 id="A"
                 name="avatar"
                 value="/Tivial-Assets\Av01Red.svg"
+                checked
               />
               <img src="/Tivial-Assets\Av01Red.svg" />
             </label>
@@ -97,6 +99,7 @@
                 id="F"
                 name="avatar"
                 value="/Tivial-Assets\Av06Violet.svg"
+
               />
               <img src="/Tivial-Assets\Av06Violet.svg" />
             </label>
@@ -113,7 +116,7 @@
         <h2>Select a category</h2>
         <div class="category-container" >
           <label>
-              <input class ="category-button" data-category="17" type="radio" name="category"/>
+              <input class ="category-button" data-category="17" type="radio" name="category" checked/>
               <p> Science and Nature</P>
             </label>
 
@@ -146,7 +149,7 @@
           <h2>Difficulty</h2>
           <div class="difficulty-container">
             <label>
-                <input class ="difficulty-button" data-category= "Easy" type="radio" name="difficulty" />
+                <input class ="difficulty-button" data-category= "Easy" type="radio" name="difficulty" checked />
                 <p> Easy </P>
               </label> 
   
@@ -166,36 +169,47 @@
         </section>
       </section>
 <br />
-     <!-- <section class="screen4">
-        <div class="header">
-          <div class="character-display">
-            <div class="avatar">Character</div>
-            <p class="player-name">name</p>
+     <!-- Screen 4 -->
+     <section id="screen4" class="screen4 screen flex hide">
+          <div class="header">
+            <div class="character-display">
+              <div class="avatar">Character</div>
+              <p class="player-name">name</p>
+            </div>
+            <div class="screen-logo">
+              <img src="/Tivial-Assets/Logo-Trivial/01LogoBase.svg" alt="" />
+            </div>
           </div>
-          <div class="logo">TRIVIAL</div>
-        </div>
-        <div class="progress-bar"></div>
-        <div class="question">
-          <h2>Question</h2>
-        </div>
-        <div class="answers">
-          <button>Answer 1</button>
-          <button>Answer 2</button>
-          <button>Answer 3</button>
-          <button>Answer 4</button>
-        </div>
-      </section> -->  -->
+          <div class="progress-bar">
+            <div class="show-game-progress"></div>
+            <div class="progress"></div>
+            <span class="show-game-progress"></span>
+          </div>
+          <div class="question speech-bubble">
+            <h2 class="question-h2">Question</h2>
+          </div>
+          <div id="answers" class="flex">
+            <button id="correct-answer" class="answer">Answer 1</button>
+            <button class="incorrect-answer answer incorrect-1">Answer 2</button>
+            <button class="incorrect-answer answer incorrect-2">Answer 3</button>
+            <button class="incorrect-answer answer incorrect-3">Answer 4</button>
+          </div>
+</section>
+      <!-- Screen 5 -->
       <section id="screen5" class="screen flex hide">
         <div class="screen-logo">
           <img src="/Tivial-Assets/Logo-Trivial/01LogoBase.svg" alt="">
         </div>
-        <div class="score-board">
-          <div class="score-text">5/10</div>
+        <div class="score-board-container">
+          <div class="score-board">
+            <div class="score-text"><span class="correct-answer-display"></span>/10</div>
+          </div>
+          <div class="avatar-unsername-container">
+            <img id="user-avatar" src="/Tivial-Assets\Av01Red.svg" >
+            <div class="username-text">Username</div>
+          </div>
         </div>
-        <div class="avatar-unsername-container">
-          <img id="user-avatar" src="/Tivial-Assets\Av01Red.svg" >
-          <div class="username-text">Username</div>
-        </div>
+        
         
         <!-- gif appears here UwU -->
         <button type="button" class="play-again">Play Again!</button>

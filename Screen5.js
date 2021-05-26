@@ -1,12 +1,12 @@
 // delete me when merged
-let score = 10;
+// let score = 10;
 // let username = "Emily";
 // let avatarImage = "/Tivial-AssetsAv01Red.svg";
 //delete me when merged
 const API_KEY = "4Y7M7LY0VDS6";
 let playAgainButton = document.querySelector(".play-again");
 let searchTerm = "trivia";
-
+let correctAnswerSpan = document.querySelector(".correct-answer-display");
 //A simple function that translates score into a search term for API to use
 function readScore(score) {
   if (score == 0) {
@@ -40,7 +40,7 @@ async function fetchGif() {
   console.log(data.results[0].media[0].mediumgif.url);
 }
 fetchGif();
-
+playAgainButton.addEventListener("click", startGame);
 // const otherButton = document.querySelector(".tester");
 // console.log(otherButton);
 

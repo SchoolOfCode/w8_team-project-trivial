@@ -29,17 +29,18 @@
 
 /*  TRIVIA API */
 //added variables for difficulty and cathegory
-let difficultySelection = "easy";
-let categorySelection = "1";
 let screen3 = document.querySelector("#screen3");
-const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
-async function fetchQuestion() {
-  let response = await fetch(
-    "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
-  );
-  let data = await response.json();
-}
-fetchQuestion();
+// let difficultySelection = "easy";
+// let categorySelection = "1";
+
+// const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
+// async function fetchQuestion() {
+//   let response = await fetch(
+//     "https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple"
+//   );
+//   let data = await response.json();
+// }
+// fetchQuestion();
 
 let username = "";
 let confirmButton = document.querySelector(".confirm-button");
@@ -71,12 +72,17 @@ function getAvatarAndUsername() {
 
 function confirm() {
   let input = document.querySelector("#name-input").value;
-  username = input.charAt(0).toUpperCase() + input.slice(1);
-  // console.log(username);
-  getAvatar();
-  getAvatarAndUsername();
-  screen2.classList.add("hide");
-  // screen3.classList.remove("hide");
-  //keep line 78, remove line 80 after working on screen 5 is done
-  screen5.classList.remove("hide");
+
+  if (input === "") {
+    alert("Please enter your name");
+  } else {
+    username = input.charAt(0).toUpperCase() + input.slice(1);
+    // console.log(username);
+    getAvatar();
+    getAvatarAndUsername();
+    screen2.classList.add("hide");
+    // screen3.classList.remove("hide");
+    //keep line 78, remove line 80 after working on screen 5 is done
+    screen3.classList.remove("hide");
+  }
 }

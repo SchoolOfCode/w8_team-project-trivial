@@ -56,9 +56,6 @@ FUNCTION GET_CURRENT_QUESTION
   let questionCounter = 0;
   const maximumQuestions = 10;
   
-  // if (questionCounter = maximumQuestions) {
-  //   let finishedGame = document.getElementById("myAnchor").href;
-  //   console.log(finishedGame)
   
   function startGame(questionsArray) {
     questionsArray = [];
@@ -87,13 +84,12 @@ FUNCTION GET_CURRENT_QUESTION
     if (count >= 11) {
       alert("Count ten reached");
     }
-  
+
     questionCounter++;
     showGameProgress.style.width = `${
       (questionCounter / maximumQuestions) * 100
     }%`;
     showGameProgress.innerText = `${questionCounter}/${maximumQuestions}`;
-    // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
   
     shuffle();
     return count;
@@ -109,15 +105,7 @@ FUNCTION GET_CURRENT_QUESTION
     }
     parent.appendChild(button);
   }
-  //handle answer response
-  /* Loop though answers node list
-  when clicked, alert("ciao")
   
-  ADD ANSWER CLASS TO ALL ANSWERS
-  SELECT ANSWERS
-  LOOP THOUGH NODELIST
-  ADD CLICK LISTENER TO ALL
-  */
   function increaseScoreOnClick() {
     let score = 0;
     let allAnswers = document.querySelectorAll(".answer");
@@ -139,4 +127,5 @@ FUNCTION GET_CURRENT_QUESTION
   );
   
   startAgain.addEventListener("click", startGame);
+  
   
