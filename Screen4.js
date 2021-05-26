@@ -128,4 +128,11 @@ FUNCTION GET_CURRENT_QUESTION
   
   startAgain.addEventListener("click", startGame);
   
+  // function goToScreen5() {
+  //   screen4.classList.add("hide");
+  //   screen5.classList.remove("hide");
+  // }
+  
+  // let letsGo = document.querySelector(".letsgo-button");
+  // letsGo.addEventListener("click", goToScreen4);
   
