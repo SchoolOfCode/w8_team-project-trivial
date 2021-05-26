@@ -315,5 +315,10 @@ body {
   text-transform: uppercase;
   color: white;
   letter-spacing: 3;
-  background: blue;
+  background: var(--app-light-blue);
+  border-radius: 10px;
+  border: none;
+}
+.answer button :focus {
+  background: red;
 }
