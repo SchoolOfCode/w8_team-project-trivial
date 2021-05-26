@@ -88,12 +88,13 @@ function getCurrentQuestion(questionsArray) {
     alert("Count ten reached");
   }
 
-
   questionCounter++;
-  showGameProgress.style.width = `${(questionCounter / maximumQuestions) * 100}%`;
+  showGameProgress.style.width = `${
+    (questionCounter / maximumQuestions) * 100
+  }%`;
   showGameProgress.innerText = `${questionCounter}/${maximumQuestions}`;
   // IF MAXIMUM QUESTIONS REACHED LINK TO SCREEN 5
-  
+
   shuffle();
   return count;
 }
@@ -130,11 +131,11 @@ function increaseScoreOnClick() {
       }
     };
   }
-
 }
 increaseScoreOnClick();
-// let totalScore = increaseScoreOnClick();
-// console.log();
-generateQuestionButton.addEventListener("click", () => getCurrentQuestion(questionsArray));
+
+generateQuestionButton.addEventListener("click", () =>
+  getCurrentQuestion(questionsArray)
+);
 
 startAgain.addEventListener("click", startGame);
