@@ -1,4 +1,4 @@
-// / - select input form the dom
+// / - select input from the dom
 //
 // Feature 1: Name input
 // - select input from the dom
@@ -35,16 +35,7 @@ let difficulty = "";
 // let questionsArray = [];
 
 // const requestUrlTriviaApi = `https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple`;
-async function fetchQuestion() {
-  console.log(selection);
-  console.log(difficulty);
-  let response = await fetch(
-    `https://opentdb.com/api.php?amount=10&category=${selection}&difficulty=${difficulty.toLowerCase()}&type=multiple`
-  );
-  let data = await response.json();
-  console.log(data);
-  questionsArray = data.results;
-}
+
 // fetchQuestion();
 let getCategory = document.querySelectorAll(".category-button");
 getCategory.forEach((item) => {

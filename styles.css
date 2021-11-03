@@ -379,7 +379,7 @@ div.character-selection {
   height: 120px;
   text-align: center;
   min-height: 250px;
-  overflow: clip;
+  overflow: inherit;
 }
 .question {
   display: flex;
